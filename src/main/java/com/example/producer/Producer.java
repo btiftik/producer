@@ -40,10 +40,9 @@ public class Producer {
 
                 ExecutorService executorService = Executors.newFixedThreadPool(producerNumber);
                 for (int i = 0; i < producerNumber; i++) {
-                    System.out.println("type: " + i);
                     callableSenderList.add(getCallableSender());
                 }
-                System.out.println("list size: " + callableSenderList.size());
+                System.out.println("Number of Producers created: " + callableSenderList.size());
                 executorService.invokeAll(callableSenderList);
                 executorService.awaitTermination(5, TimeUnit.SECONDS);
                 executorService.shutdown();
